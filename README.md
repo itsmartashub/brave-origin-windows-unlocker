@@ -1,14 +1,14 @@
 # Brave Origin Windows Unlocker
 
-A TypeScript utility for unlocking Brave Origin Beta features on Windows by modifying the local application state.
+A TypeScript utility for unlocking Brave Origin features on Windows by modifying the local application state.
 
 ## Overview
 
-This tool modifies the Brave Origin Beta browser's local state configuration to unlock premium features. It works by updating the `Local State` JSON file used by Brave to store user preferences and license validation status.
+This tool modifies the Brave Origin browser's local state configuration to unlock premium features. It works by updating the `Local State` JSON file used by Brave to store user preferences and license validation status.
 
 ## Features
 
-- ✅ Unlocks Brave Origin Beta features
+- ✅ Unlocks Brave Origin features
 - ✅ Modifies purchase validation state
 - ✅ Updates SKU credentials
 - ✅ Windows-compatible local data path handling
@@ -17,7 +17,7 @@ This tool modifies the Brave Origin Beta browser's local state configuration to 
 
 - **Deno** - Modern JavaScript/TypeScript runtime
 - **Windows OS** - Designed for Windows file paths
-- **Brave Origin Beta** - The browser being modified
+- **Brave Origin** - The browser being modified
 - **File Write Permissions** - Access to `%LOCALAPPDATA%` directory
 
 ## Installation
