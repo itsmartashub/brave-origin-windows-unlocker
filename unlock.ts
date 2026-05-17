@@ -1,22 +1,34 @@
 const localAppData = Deno.env.get("LOCALAPPDATA");
 
-const localStatePath =
-  `${localAppData}\\BraveSoftware\\Brave-Origin-Beta\\User Data\\Local State`;
+const versions = ["Brave-Origin-Beta", "Brave-Origin-Nightly"];
+let foundAny = false;
 
-const localState = JSON.parse(await Deno.readTextFile(localStatePath));
+for (const version of versions) {
+  const localStatePath = localAppData + "\\BraveSoftware\\" + version + "\\User Data\\Local State";
 
-localState.brave.origin = { purchase_validated: true };
+  try {
+    const localState = JSON.parse(await Deno.readTextFile(localStatePath));
 
-localState.skus = {
-  state: {
-    "67": JSON.stringify({
-      credentials: {
-        items: { "6": "7" },
+    localState.brave.origin = { purchase_validated: true };
+
+    localState.skus = {
+      state: {
+        "67": JSON.stringify({
+          credentials: {
+            items: { "6": "7" },
+          },
+        }),
       },
-    }),
-  },
-};
+    };
 
-await Deno.writeTextFile(localStatePath, JSON.stringify(localState));
+    await Deno.writeTextFile(localStatePath, JSON.stringify(localState));
 
-console.log("Brave Origin Beta unlocked successfully!");
+    console.log(version.replace(/-/g, " ") + " unlocked successfully!");
+    foundAny = true;
+  } catch {
+  }
+}
+
+if (!foundAny) {
+  console.log("Brave Origin not found.");
+}
